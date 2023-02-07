@@ -5,6 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.Properties;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -22,7 +23,7 @@ public class baseClass {
 	public static FileReader lr;
 	
 	@BeforeTest
-	public void setup() throws IOException
+	public void setup() throws IOException, InterruptedException
 	{
 		if(driver==null)
 		{
@@ -36,8 +37,14 @@ public class baseClass {
 		if(prop.getProperty("browser").equalsIgnoreCase("chrome"))
 		{
 			WebDriverManager.chromedriver().setup();
-			 driver = new ChromeDriver();
+			driver = new ChromeDriver();
 			driver.get(prop.getProperty("testurl"));
+			driver.findElement(By.xpath(loc.getProperty("SignIn_Link"))).click(); // Locators also can be placed at different place for the ease of changes
+			driver.findElement(By.xpath(loc.getProperty("Username"))).sendKeys("pramod11112021@gmail.com");//can be taken from files
+			driver.findElement(By.xpath(loc.getProperty("NextButton"))).click(); //can be taken from files
+			Thread.sleep(3000);
+			driver.findElement(By.xpath(loc.getProperty("Password"))).sendKeys("Zoho@2022@1234");
+			driver.findElement(By.xpath(loc.getProperty("SignIn_Login"))).click();
 		}
 		
 		else if(prop.getProperty("browser").equalsIgnoreCase("firefox"))
