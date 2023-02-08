@@ -10,7 +10,7 @@ public class loginTest extends baseClass{
 	@Test
 	public static void loginTest() throws InterruptedException
 	{
-		System.out.println("We are here");
+		System.out.println("We are logged in suuccessfully");
 		Thread.sleep(3000);
 		//driver.findElement(By.xpath("//a[@class='login']")).click();
 

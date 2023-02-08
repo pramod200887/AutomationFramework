@@ -14,7 +14,7 @@ public class titleVerification extends baseClass {
 	@Test
 	public static void pageTile()	
 	{
-		String expectedTitle ="Zoho Accounts";
+		String expectedTitle ="Explore All Products | Zoho";
 		String actualTitle = driver.getTitle();
 		System.out.println("Page title is: " +actualTitle);
 		assertEquals(actualTitle, expectedTitle);
